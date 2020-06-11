@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.hotel.demo.dao.RoomMapper">
+  <resultMap id="BaseResultMap" type="com.springboot.hotel.demo.entity.Room">
+    <id column="roomId" jdbcType="INTEGER" property="roomid" />
+    <result column="hotelId" jdbcType="INTEGER" property="hotelid" />
+    <result column="roomType" jdbcType="VARCHAR" property="roomtype" />
+    <result column="bedType" jdbcType="VARCHAR" property="bedtype" />
+    <result column="service" jdbcType="VARCHAR" property="service" />
+    <result column="hasbreakfast" jdbcType="BIT" property="hasbreakfast" />
+    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="commentNum" jdbcType="INTEGER" property="commentnum" />
+    <result column="collectNum" jdbcType="INTEGER" property="collectnum" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    roomId, hotelId, roomType, bedType, service, hasbreakfast, price, commentNum, collectNum
+  </sql>
+  <select id="selectByExample" parameterType="com.springboot.hotel.demo.entity.RoomExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from room
+    where roomId = #{roomid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from room
+    where roomId = #{roomid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.springboot.hotel.demo.entity.RoomExample">
+    delete from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.springboot.hotel.demo.entity.Room">
+    insert into room (roomId, hotelId, roomType, 
+      bedType, service, hasbreakfast, 
+      price, commentNum, collectNum
+      )
+    values (#{roomid,jdbcType=INTEGER}, #{hotelid,jdbcType=INTEGER}, #{roomtype,jdbcType=VARCHAR}, 
+      #{bedtype,jdbcType=VARCHAR}, #{service,jdbcType=VARCHAR}, #{hasbreakfast,jdbcType=BIT}, 
+      #{price,jdbcType=INTEGER}, #{commentnum,jdbcType=INTEGER}, #{collectnum,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.hotel.demo.entity.Room">
+    insert into room
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roomid != null">
+        roomId,
+      </if>
+      <if test="hotelid != null">
+        hotelId,
+      </if>
+      <if test="roomtype != null">
+        roomType,
+      </if>
+      <if test="bedtype != null">
+        bedType,
+      </if>
+      <if test="service != null">
+        service,
+      </if>
+      <if test="hasbreakfast != null">
+        hasbreakfast,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="commentnum != null">
+        commentNum,
+      </if>
+      <if test="collectnum != null">
+        collectNum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roomid != null">
+        #{roomid,jdbcType=INTEGER},
+      </if>
+      <if test="hotelid != null">
+        #{hotelid,jdbcType=INTEGER},
+      </if>
+      <if test="roomtype != null">
+        #{roomtype,jdbcType=VARCHAR},
+      </if>
+      <if test="bedtype != null">
+        #{bedtype,jdbcType=VARCHAR},
+      </if>
+      <if test="service != null">
+        #{service,jdbcType=VARCHAR},
+      </if>
+      <if test="hasbreakfast != null">
+        #{hasbreakfast,jdbcType=BIT},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="commentnum != null">
+        #{commentnum,jdbcType=INTEGER},
+      </if>
+      <if test="collectnum != null">
+        #{collectnum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.springboot.hotel.demo.entity.RoomExample" resultType="java.lang.Long">
+    select count(*) from room
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update room
+    <set>
+      <if test="record.roomid != null">
+        roomId = #{record.roomid,jdbcType=INTEGER},
+      </if>
+      <if test="record.hotelid != null">
+        hotelId = #{record.hotelid,jdbcType=INTEGER},
+      </if>
+      <if test="record.roomtype != null">
+        roomType = #{record.roomtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bedtype != null">
+        bedType = #{record.bedtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.service != null">
+        service = #{record.service,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hasbreakfast != null">
+        hasbreakfast = #{record.hasbreakfast,jdbcType=BIT},
+      </if>
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=INTEGER},
+      </if>
+      <if test="record.commentnum != null">
+        commentNum = #{record.commentnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.collectnum != null">
+        collectNum = #{record.collectnum,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update room
+    set roomId = #{record.roomid,jdbcType=INTEGER},
+      hotelId = #{record.hotelid,jdbcType=INTEGER},
+      roomType = #{record.roomtype,jdbcType=VARCHAR},
+      bedType = #{record.bedtype,jdbcType=VARCHAR},
+      service = #{record.service,jdbcType=VARCHAR},
+      hasbreakfast = #{record.hasbreakfast,jdbcType=BIT},
+      price = #{record.price,jdbcType=INTEGER},
+      commentNum = #{record.commentnum,jdbcType=INTEGER},
+      collectNum = #{record.collectnum,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.hotel.demo.entity.Room">
+    update room
+    <set>
+      <if test="hotelid != null">
+        hotelId = #{hotelid,jdbcType=INTEGER},
+      </if>
+      <if test="roomtype != null">
+        roomType = #{roomtype,jdbcType=VARCHAR},
+      </if>
+      <if test="bedtype != null">
+        bedType = #{bedtype,jdbcType=VARCHAR},
+      </if>
+      <if test="service != null">
+        service = #{service,jdbcType=VARCHAR},
+      </if>
+      <if test="hasbreakfast != null">
+        hasbreakfast = #{hasbreakfast,jdbcType=BIT},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="commentnum != null">
+        commentNum = #{commentnum,jdbcType=INTEGER},
+      </if>
+      <if test="collectnum != null">
+        collectNum = #{collectnum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where roomId = #{roomid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.hotel.demo.entity.Room">
+    update room
+    set hotelId = #{hotelid,jdbcType=INTEGER},
+      roomType = #{roomtype,jdbcType=VARCHAR},
+      bedType = #{bedtype,jdbcType=VARCHAR},
+      service = #{service,jdbcType=VARCHAR},
+      hasbreakfast = #{hasbreakfast,jdbcType=BIT},
+      price = #{price,jdbcType=INTEGER},
+      commentNum = #{commentnum,jdbcType=INTEGER},
+      collectNum = #{collectnum,jdbcType=INTEGER}
+    where roomId = #{roomid,jdbcType=INTEGER}
+  </update>
+</mapper>

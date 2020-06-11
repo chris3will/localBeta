@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.hotel.demo.dao.RoomimgMapper">
+  <resultMap id="BaseResultMap" type="com.springboot.hotel.demo.entity.Roomimg">
+    <id column="imgId" jdbcType="INTEGER" property="imgid" />
+    <result column="roomId" jdbcType="INTEGER" property="roomid" />
+    <result column="imgurl" jdbcType="VARCHAR" property="imgurl" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    imgId, roomId, imgurl
+  </sql>
+  <select id="selectByExample" parameterType="com.springboot.hotel.demo.entity.RoomimgExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from roomimg
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from roomimg
+    where imgId = #{imgid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from roomimg
+    where imgId = #{imgid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.springboot.hotel.demo.entity.RoomimgExample">
+    delete from roomimg
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.springboot.hotel.demo.entity.Roomimg">
+    insert into roomimg (imgId, roomId, imgurl
+      )
+    values (#{imgid,jdbcType=INTEGER}, #{roomid,jdbcType=INTEGER}, #{imgurl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.hotel.demo.entity.Roomimg">
+    insert into roomimg
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="imgid != null">
+        imgId,
+      </if>
+      <if test="roomid != null">
+        roomId,
+      </if>
+      <if test="imgurl != null">
+        imgurl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="imgid != null">
+        #{imgid,jdbcType=INTEGER},
+      </if>
+      <if test="roomid != null">
+        #{roomid,jdbcType=INTEGER},
+      </if>
+      <if test="imgurl != null">
+        #{imgurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.springboot.hotel.demo.entity.RoomimgExample" resultType="java.lang.Long">
+    select count(*) from roomimg
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update roomimg
+    <set>
+      <if test="record.imgid != null">
+        imgId = #{record.imgid,jdbcType=INTEGER},
+      </if>
+      <if test="record.roomid != null">
+        roomId = #{record.roomid,jdbcType=INTEGER},
+      </if>
+      <if test="record.imgurl != null">
+        imgurl = #{record.imgurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update roomimg
+    set imgId = #{record.imgid,jdbcType=INTEGER},
+      roomId = #{record.roomid,jdbcType=INTEGER},
+      imgurl = #{record.imgurl,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.hotel.demo.entity.Roomimg">
+    update roomimg
+    <set>
+      <if test="roomid != null">
+        roomId = #{roomid,jdbcType=INTEGER},
+      </if>
+      <if test="imgurl != null">
+        imgurl = #{imgurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where imgId = #{imgid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.hotel.demo.entity.Roomimg">
+    update roomimg
+    set roomId = #{roomid,jdbcType=INTEGER},
+      imgurl = #{imgurl,jdbcType=VARCHAR}
+    where imgId = #{imgid,jdbcType=INTEGER}
+  </update>
+</mapper>

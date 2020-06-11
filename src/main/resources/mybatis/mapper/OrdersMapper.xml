@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.hotel.demo.dao.OrdersMapper">
+  <resultMap id="BaseResultMap" type="com.springboot.hotel.demo.entity.Orders">
+    <id column="orderId" jdbcType="INTEGER" property="orderid" />
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="roomId" jdbcType="INTEGER" property="roomid" />
+    <result column="enterDate" jdbcType="TIMESTAMP" property="enterdate" />
+    <result column="exitDate" jdbcType="TIMESTAMP" property="exitdate" />
+    <result column="startTime" jdbcType="TIMESTAMP" property="starttime" />
+    <result column="closeTime" jdbcType="TIMESTAMP" property="closetime" />
+    <result column="canbeUnsubscribe" jdbcType="BIT" property="canbeunsubscribe" />
+    <result column="orderStatus" jdbcType="INTEGER" property="orderstatus" />
+    <result column="iccommented" jdbcType="BIT" property="iccommented" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    orderId, id, roomId, enterDate, exitDate, startTime, closeTime, canbeUnsubscribe, 
+    orderStatus, iccommented
+  </sql>
+  <select id="selectByExample" parameterType="com.springboot.hotel.demo.entity.OrdersExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from orders
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from orders
+    where orderId = #{orderid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from orders
+    where orderId = #{orderid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.springboot.hotel.demo.entity.OrdersExample">
+    delete from orders
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.springboot.hotel.demo.entity.Orders">
+    insert into orders (orderId, id, roomId, 
+      enterDate, exitDate, startTime, 
+      closeTime, canbeUnsubscribe, orderStatus, 
+      iccommented)
+    values (#{orderid,jdbcType=INTEGER}, #{id,jdbcType=INTEGER}, #{roomid,jdbcType=INTEGER}, 
+      #{enterdate,jdbcType=TIMESTAMP}, #{exitdate,jdbcType=TIMESTAMP}, #{starttime,jdbcType=TIMESTAMP}, 
+      #{closetime,jdbcType=TIMESTAMP}, #{canbeunsubscribe,jdbcType=BIT}, #{orderstatus,jdbcType=INTEGER}, 
+      #{iccommented,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springboot.hotel.demo.entity.Orders">
+    insert into orders
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        orderId,
+      </if>
+      <if test="id != null">
+        id,
+      </if>
+      <if test="roomid != null">
+        roomId,
+      </if>
+      <if test="enterdate != null">
+        enterDate,
+      </if>
+      <if test="exitdate != null">
+        exitDate,
+      </if>
+      <if test="starttime != null">
+        startTime,
+      </if>
+      <if test="closetime != null">
+        closeTime,
+      </if>
+      <if test="canbeunsubscribe != null">
+        canbeUnsubscribe,
+      </if>
+      <if test="orderstatus != null">
+        orderStatus,
+      </if>
+      <if test="iccommented != null">
+        iccommented,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roomid != null">
+        #{roomid,jdbcType=INTEGER},
+      </if>
+      <if test="enterdate != null">
+        #{enterdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exitdate != null">
+        #{exitdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="starttime != null">
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closetime != null">
+        #{closetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="canbeunsubscribe != null">
+        #{canbeunsubscribe,jdbcType=BIT},
+      </if>
+      <if test="orderstatus != null">
+        #{orderstatus,jdbcType=INTEGER},
+      </if>
+      <if test="iccommented != null">
+        #{iccommented,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.springboot.hotel.demo.entity.OrdersExample" resultType="java.lang.Long">
+    select count(*) from orders
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update orders
+    <set>
+      <if test="record.orderid != null">
+        orderId = #{record.orderid,jdbcType=INTEGER},
+      </if>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.roomid != null">
+        roomId = #{record.roomid,jdbcType=INTEGER},
+      </if>
+      <if test="record.enterdate != null">
+        enterDate = #{record.enterdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.exitdate != null">
+        exitDate = #{record.exitdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.starttime != null">
+        startTime = #{record.starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.closetime != null">
+        closeTime = #{record.closetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.canbeunsubscribe != null">
+        canbeUnsubscribe = #{record.canbeunsubscribe,jdbcType=BIT},
+      </if>
+      <if test="record.orderstatus != null">
+        orderStatus = #{record.orderstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.iccommented != null">
+        iccommented = #{record.iccommented,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update orders
+    set orderId = #{record.orderid,jdbcType=INTEGER},
+      id = #{record.id,jdbcType=INTEGER},
+      roomId = #{record.roomid,jdbcType=INTEGER},
+      enterDate = #{record.enterdate,jdbcType=TIMESTAMP},
+      exitDate = #{record.exitdate,jdbcType=TIMESTAMP},
+      startTime = #{record.starttime,jdbcType=TIMESTAMP},
+      closeTime = #{record.closetime,jdbcType=TIMESTAMP},
+      canbeUnsubscribe = #{record.canbeunsubscribe,jdbcType=BIT},
+      orderStatus = #{record.orderstatus,jdbcType=INTEGER},
+      iccommented = #{record.iccommented,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springboot.hotel.demo.entity.Orders">
+    update orders
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roomid != null">
+        roomId = #{roomid,jdbcType=INTEGER},
+      </if>
+      <if test="enterdate != null">
+        enterDate = #{enterdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exitdate != null">
+        exitDate = #{exitdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="starttime != null">
+        startTime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closetime != null">
+        closeTime = #{closetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="canbeunsubscribe != null">
+        canbeUnsubscribe = #{canbeunsubscribe,jdbcType=BIT},
+      </if>
+      <if test="orderstatus != null">
+        orderStatus = #{orderstatus,jdbcType=INTEGER},
+      </if>
+      <if test="iccommented != null">
+        iccommented = #{iccommented,jdbcType=BIT},
+      </if>
+    </set>
+    where orderId = #{orderid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springboot.hotel.demo.entity.Orders">
+    update orders
+    set id = #{id,jdbcType=INTEGER},
+      roomId = #{roomid,jdbcType=INTEGER},
+      enterDate = #{enterdate,jdbcType=TIMESTAMP},
+      exitDate = #{exitdate,jdbcType=TIMESTAMP},
+      startTime = #{starttime,jdbcType=TIMESTAMP},
+      closeTime = #{closetime,jdbcType=TIMESTAMP},
+      canbeUnsubscribe = #{canbeunsubscribe,jdbcType=BIT},
+      orderStatus = #{orderstatus,jdbcType=INTEGER},
+      iccommented = #{iccommented,jdbcType=BIT}
+    where orderId = #{orderid,jdbcType=INTEGER}
+  </update>
+</mapper>
