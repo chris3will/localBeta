@@ -82,16 +82,18 @@ public class Result {
     public static  JSONResultMap fail(){
         return getJSONResultMap().put(SUCCESS,false).put("code",200);
     }
-    /*
+
     public static  JSONResultMap fail(Object data){
         return fail().put(DATA,data);
     }
+
+
     public static  JSONResultMap fail(Object data,String message){
         return fail().put(DATA,data).put(MESSAGE,message);
     }
     public static  JSONResultMap fail(Object data,String message,int statusCode){
         return fail(data).put(MESSAGE,message).put("code",statusCode);
-    }*/
+    }
     public static  JSONResultMap fail(String message,int statusCode){
         return fail(message).put("code",statusCode);
     }

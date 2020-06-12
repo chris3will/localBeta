@@ -5,6 +5,20 @@ import java.util.Date;
 public class User {
     private Integer id;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", salt='" + salt + '\'' +
+                ", identity='" + identity + '\'' +
+                ", registerdate=" + registerdate +
+                ", lastlogintime=" + lastlogintime +
+                '}';
+    }
+
     private String username;
 
     private String password;

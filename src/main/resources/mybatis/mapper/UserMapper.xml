@@ -8,7 +8,7 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="salt" jdbcType="VARCHAR" property="salt" />
     <result column="identity" jdbcType="CHAR" property="identity" />
-    <result column="registerDate" jdbcType="TIMESTAMP" property="registerdate" />
+    <result column="registerDate" jdbcType="DATE" property="registerdate" />
     <result column="lastLoginTime" jdbcType="TIMESTAMP" property="lastlogintime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -103,12 +103,15 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.springboot.hotel.demo.entity.User">
+    <selectKey keyProperty="id" resultType="int" order="BEFORE">
+        select if(max(id) is null,1,max(id)+2) as newId from user
+    </selectKey>
     insert into user (id, userName, password, 
       email, salt, identity, 
       registerDate, lastLoginTime)
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{identity,jdbcType=CHAR}, 
-      #{registerdate,jdbcType=TIMESTAMP}, #{lastlogintime,jdbcType=TIMESTAMP})
+      #{email,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR},  #{identity,jdbcType=CHAR},
+      #{registerdate,jdbcType=DATE}, #{lastlogintime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.springboot.hotel.demo.entity.User">
     insert into user
@@ -158,7 +161,7 @@
         #{identity,jdbcType=CHAR},
       </if>
       <if test="registerdate != null">
-        #{registerdate,jdbcType=TIMESTAMP},
+        #{registerdate,jdbcType=DATE},
       </if>
       <if test="lastlogintime != null">
         #{lastlogintime,jdbcType=TIMESTAMP},
@@ -193,7 +196,7 @@
         identity = #{record.identity,jdbcType=CHAR},
       </if>
       <if test="record.registerdate != null">
-        registerDate = #{record.registerdate,jdbcType=TIMESTAMP},
+        registerDate = #{record.registerdate,jdbcType=DATE},
       </if>
       <if test="record.lastlogintime != null">
         lastLoginTime = #{record.lastlogintime,jdbcType=TIMESTAMP},
@@ -211,7 +214,7 @@
       email = #{record.email,jdbcType=VARCHAR},
       salt = #{record.salt,jdbcType=VARCHAR},
       identity = #{record.identity,jdbcType=CHAR},
-      registerDate = #{record.registerdate,jdbcType=TIMESTAMP},
+      registerDate = #{record.registerdate,jdbcType=DATE},
       lastLoginTime = #{record.lastlogintime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -236,7 +239,7 @@
         identity = #{identity,jdbcType=CHAR},
       </if>
       <if test="registerdate != null">
-        registerDate = #{registerdate,jdbcType=TIMESTAMP},
+        registerDate = #{registerdate,jdbcType=DATE},
       </if>
       <if test="lastlogintime != null">
         lastLoginTime = #{lastlogintime,jdbcType=TIMESTAMP},
@@ -251,8 +254,27 @@
       email = #{email,jdbcType=VARCHAR},
       salt = #{salt,jdbcType=VARCHAR},
       identity = #{identity,jdbcType=CHAR},
-      registerDate = #{registerdate,jdbcType=TIMESTAMP},
+      registerDate = #{registerdate,jdbcType=DATE},
       lastLoginTime = #{lastlogintime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+<!--  自定义的函数-->
+
+  <select id="selectByUsername" resultMap="BaseResultMap">
+    select *
+    from user
+    where userName=#{username}
+  </select>
+  <select id="selectByEmail" resultMap="BaseResultMap">
+    select *
+    from user
+    where email = #{email}
+  </select>
+
+  <select id="selectByUsernameAndEmail" resultMap="BaseResultMap">
+    select *
+    from user
+    where userName=#{username} and email = #{email}
+  </select>
 </mapper>

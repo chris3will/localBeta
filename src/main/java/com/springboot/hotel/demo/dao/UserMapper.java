@@ -27,4 +27,10 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    //自定义生成函数
+    List<User> selectByUsername(String username);
+    List<User> selectByEmail(String username);
+    List<User> selectByUsernameAndEmail(String username, String email);
+
 }
