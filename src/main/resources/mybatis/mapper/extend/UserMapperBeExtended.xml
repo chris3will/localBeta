@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.hotel.demo.dao.UserMapper">
+    <resultMap id="myMap" type="com.springboot.hotel.demo.entity.User" extends="BaseResultMap">
+    </resultMap>
+    <!--  自定义的函数-->
+<!--查询-->
+    <select id="selectByUsername" resultMap="BaseResultMap">
+    select *
+    from user
+    where userName=#{username}
+  </select>
+    <select id="selectByEmail" resultMap="BaseResultMap">
+    select *
+    from user
+    where email = #{email}
+  </select>
+
+    <select id="selectByUsernameAndEmail" resultMap="BaseResultMap">
+    select *
+    from user
+    where userName=#{username} and email = #{email}
+  </select>
+
+<!--    删除-->
+    <delete id="deleteByNames" parameterType="java.util.List">
+        delete from user where username in
+        <foreach collection="list" item="str" open="(" close=")" separator=",">
+            #{str}
+        </foreach>
+    </delete>
+
+<!--    修改-->
+    <update id="updateLastLoginTime" parameterType="map">
+        UPDATE user
+        <set>
+            <if test="record.lastLoginTime != null">lastLoginTime = #{record.lastlogintime}</if>
+        </set>
+        where id = #{record.id}
+    </update>
+</mapper>

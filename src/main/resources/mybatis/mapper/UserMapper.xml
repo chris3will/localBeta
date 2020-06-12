@@ -259,22 +259,5 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-<!--  自定义的函数-->
 
-  <select id="selectByUsername" resultMap="BaseResultMap">
-    select *
-    from user
-    where userName=#{username}
-  </select>
-  <select id="selectByEmail" resultMap="BaseResultMap">
-    select *
-    from user
-    where email = #{email}
-  </select>
-
-  <select id="selectByUsernameAndEmail" resultMap="BaseResultMap">
-    select *
-    from user
-    where userName=#{username} and email = #{email}
-  </select>
 </mapper>

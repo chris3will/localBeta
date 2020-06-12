@@ -1,11 +1,12 @@
 package com.springboot.hotel.demo.dao;
 
+import com.springboot.hotel.demo.dao.extend.OrdersMapperBeExtended;
 import com.springboot.hotel.demo.entity.Orders;
 import com.springboot.hotel.demo.entity.OrdersExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface OrdersMapper {
+public interface OrdersMapper extends OrdersMapperBeExtended {
     long countByExample(OrdersExample example);
 
     int deleteByExample(OrdersExample example);
@@ -27,4 +28,6 @@ public interface OrdersMapper {
     int updateByPrimaryKeySelective(Orders record);
 
     int updateByPrimaryKey(Orders record);
+
+
 }

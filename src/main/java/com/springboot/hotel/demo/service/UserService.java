@@ -25,9 +25,17 @@ public class UserService {
         return new PageInfo<>(users);
     }
 
+    //配合注册用户时的数据库插入实际操作
     public Object addUser(User user){
         userMapper.insert(user);
         return null;
+    }
+
+
+    public List<User> getAllByUsername(String username){
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andUsernameEqualTo(username);
+        return userMapper.selectByExample(userExample);
     }
 
     public boolean isExistByUsername(String username)
@@ -53,4 +61,12 @@ public class UserService {
     }
 
 
+    public void deleteByNames(List<String> list) {
+        userMapper.deleteByNames(list);
+    }
+
+    public int updateLastLoginTime(User user) {
+        //update/delete，返回值是：更新或删除的行数；无需指明resultClass；但如果有约束异常而删除失败，只能去捕捉异常。
+        return userMapper.updateLastLoginTime(user);
+    }
 }

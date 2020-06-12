@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.hotel.demo.dao.OrdersMapper">
+<resultMap id="myMap" type="com.springboot.hotel.demo.entity.Orders" extends="BaseResultMap">
+    <result column="userName" property="username"/>
+</resultMap>
+<select id="selectByIds" resultMap="myMap">
+        select u.userName username, u.id userId,o.* from user u,orders o where u.id = o.id and o.orderId=#{orderId}
+    </select>
+</mapper>

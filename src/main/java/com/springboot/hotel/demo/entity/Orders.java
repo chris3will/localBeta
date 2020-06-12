@@ -1,8 +1,10 @@
 package com.springboot.hotel.demo.entity;
 
+import com.springboot.hotel.demo.entity.extend.OrdersBeExtended;
+
 import java.util.Date;
 
-public class Orders {
+public class Orders extends OrdersBeExtended {
     private Integer orderid;
 
     private Integer id;
