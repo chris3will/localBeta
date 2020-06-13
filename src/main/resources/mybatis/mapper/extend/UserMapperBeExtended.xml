@@ -31,10 +31,10 @@
     </delete>
 
 <!--    修改-->
-    <update id="updateLastLoginTime" parameterType="map">
+    <update id="updateLastLoginTime" parameterType="com.springboot.hotel.demo.entity.User">
         UPDATE user
         <set>
-            <if test="record.lastLoginTime != null">lastLoginTime = #{record.lastlogintime}</if>
+            <if test="record.lastlogintime != null">lastLoginTime = #{record.lastlogintime}</if>
         </set>
         where id = #{record.id}
     </update>

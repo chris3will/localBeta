@@ -67,6 +67,7 @@ public class UserService {
 
     public int updateLastLoginTime(User user) {
         //update/delete，返回值是：更新或删除的行数；无需指明resultClass；但如果有约束异常而删除失败，只能去捕捉异常。
+        System.out.println("正在启动更新");
         return userMapper.updateLastLoginTime(user);
     }
 }

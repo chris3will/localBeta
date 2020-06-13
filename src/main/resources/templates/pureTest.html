@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="/dist/js/jquery-3.5.1.min.js" th:src="@{/dist/js/jquery-3.5.1.min.js}">
+    </script>
+</head>
+
+<body>
+<!--<form>-->
+<!--    <table width="202" border="0" align="center" cellpadding="05" cellspacing="0" id="logintable">-->
+<!--        <tr>-->
+<!--            <td width="192"><div class="message">纯粹的前端测试</div></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td><input name="name" type="text" id="username" value="" placeholder="用户名"></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td><input name="psd" type="password" id="password" value="" placeholder="密码"></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td id="tip"> </td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td><input type="button" class="submit" value="登录" οnclick="login()"></td>-->
+<!--        </tr>-->
+<!--    </table>-->
+<!--</form>-->
+<div class="form-signin" role="form" >
+    <input type="text" class="form-control" id="username" placeholder="用户名" required autofocus />
+    <input type="password" class="form-control" id="password" placeholder="密码" required />
+    <button class="btn btn-lg btn-warning btn-block" id="btn_submit">登录</button>
+</div>
+</body>
+<script>
+    $('#btn_submit').click(function() {
+        var username=$('#username')[0].value;  //找到html上绑定的值，当然还存在很多其他的数据绑定方式，视情况而定
+        console.log(username);
+        var password=$('#password')[0].value;  //这种获取方式的值可能比较老，可以认真查阅资料后看看有没有什么别的方式
+        console.log(password);
+        $.ajax({
+            //数据集的用逗号隔开，因为这里面都是json形式的数据
+            type:'POST',
+            url:'http://localhost:9001/hotel/api/login',
+            data:JSON.stringify({"username":username,"password":password}),//注意，不同的data形式有不同的表示方法 https://blog.csdn.net/Ditto_zhou/article/details/73198886
+            contentType:'application/json;charset=utf-8',
+            //dataType:'json',
+            success:function(data){  //这success是回调函数，不是什么变量，具体可以查阅官方文档
+                var newData = JSON.stringify(data);
+                console.log(newData); //最常用的观察数据方式
+                if(data.code==200 && data.success){  //这个code的值，或者说具体判断什么变量，可以先console.log观察一下数据再说话
+                    window.location.href = "/hotel/hotel_search"; //基础的跳转方式
+                }else{
+                    alert("账号或密码错误，请重新输入！");
+                }
+            },
+            fail:function(data){
+                //如果失败，怎么处理
+                //alert比较土，可以看看老师上课讲的layer组件库，引入模态框
+                alert('失败');
+            },
+        });
+    });
+
+</script>
+
+
+</html>

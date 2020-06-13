@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
-
+import java.lang.String;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Date;
@@ -75,6 +75,7 @@ public class UserController {
             System.out.println(users.size());
             if(users.size()>=1){
                 for (User user1 : users) {
+                    System.out.println(user1);
                     if(user1.getPassword().equals(user.getPassword())){
                         //密码正确，修改该用户的登陆时间
                         user1.setLastlogintime(new Date());
@@ -93,7 +94,7 @@ public class UserController {
                 return Result.fail(tempName,"用户名不存在，登录失败");
             }
         }catch (Exception e){
-            System.out.println("登录失败");
+            System.out.println("纯粹登录失败");
             return Result.fail("纯粹登录失败登录失败");
         }
         return Result.error();
@@ -119,4 +120,7 @@ public class UserController {
         }
         //return "redirect:/";  //这里应该让他返回登录页面，因为这里它取消登录了
     }
+
+    //需要提供一个修改用户信息的接口
+    //6-13
 }
