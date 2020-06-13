@@ -10,6 +10,7 @@ import java.util.List;
 public interface UserMapperBeExtended {
     //自定义生成函数
 
+
     //删除
     //这是一个列表参数，实际上还是多参数形式，所以要加上Param
     void deleteByNames(@Param("list")List<String> list);

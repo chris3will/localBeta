@@ -3,8 +3,42 @@
 <mapper namespace="com.springboot.hotel.demo.dao.OrdersMapper">
 <resultMap id="myMap" type="com.springboot.hotel.demo.entity.Orders" extends="BaseResultMap">
     <result column="userName" property="username"/>
+    <result column="hotelId" property="hotelid"/>
+    <result column="roomType" property="roomtype"/>
+    <result column="bedType" property="bedtype"/>
+    <result column="service" property="service"/>
+    <result column="hasbreakfast" property="hasbreakfast"/>
+    <result column="price" property="price"/>
+    <result column="commentNum" property="commentnum"/>
 </resultMap>
 <select id="selectByIds" resultMap="myMap">
         select u.userName username, u.id userId,o.* from user u,orders o where u.id = o.id and o.orderId=#{orderId}
+</select>
+<select id="showMyUnpaidOrder" resultMap="myMap">
+        select * from user u, orders o, room r where u.id = o.id and o.roomId = r.roomId
+</select>
+    <select id="showOrders" resultMap="myMap">
+        select * from user u, orders o, room r where u.id = o.id and o.roomId =r.roomId
+        and u.userName=#{username} and o.orderStatus=#{statusCode}
     </select>
+    <select id="showMyAllOrder" resultMap="myMap">
+        select * from user u, orders o, room r where u.id = o.id and o.roomId = r.roomId
+        and u.userName=#{username}
+    </select>
+
+    <update id="updateOrderState" parameterType="com.springboot.hotel.demo.entity.Orders">
+        update orders
+        <set>
+            <if test="newOrderState != null">
+                orderStatus = #{newOrderState},
+            </if>
+            <if test="newOrderState == 1">
+--                 此时是要取消订单，则将日期全部清零
+                startTime=null,
+                closeTime=null
+            </if>
+        </set>
+-- 不确定这里能不能获取
+        where orderId = #{orderId}
+    </update>
 </mapper>

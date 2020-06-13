@@ -11,6 +11,8 @@
     <result column="price" jdbcType="INTEGER" property="price" />
     <result column="commentNum" jdbcType="INTEGER" property="commentnum" />
     <result column="collectNum" jdbcType="INTEGER" property="collectnum" />
+    <result column="checkinDate" jdbcType="DATE" property="checkindate" />
+    <result column="checkoutDate" jdbcType="DATE" property="checkoutdate" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -71,7 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    roomId, hotelId, roomType, bedType, service, hasbreakfast, price, commentNum, collectNum
+    roomId, hotelId, roomType, bedType, service, hasbreakfast, price, commentNum, collectNum, 
+    checkinDate, checkoutDate
   </sql>
   <select id="selectByExample" parameterType="com.springboot.hotel.demo.entity.RoomExample" resultMap="BaseResultMap">
     select
@@ -106,12 +109,12 @@
   <insert id="insert" parameterType="com.springboot.hotel.demo.entity.Room">
     insert into room (roomId, hotelId, roomType, 
       bedType, service, hasbreakfast, 
-      price, commentNum, collectNum
-      )
+      price, commentNum, collectNum, 
+      checkinDate, checkoutDate)
     values (#{roomid,jdbcType=INTEGER}, #{hotelid,jdbcType=INTEGER}, #{roomtype,jdbcType=VARCHAR}, 
       #{bedtype,jdbcType=VARCHAR}, #{service,jdbcType=VARCHAR}, #{hasbreakfast,jdbcType=BIT}, 
-      #{price,jdbcType=INTEGER}, #{commentnum,jdbcType=INTEGER}, #{collectnum,jdbcType=INTEGER}
-      )
+      #{price,jdbcType=INTEGER}, #{commentnum,jdbcType=INTEGER}, #{collectnum,jdbcType=INTEGER}, 
+      #{checkindate,jdbcType=DATE}, #{checkoutdate,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="com.springboot.hotel.demo.entity.Room">
     insert into room
@@ -143,6 +146,12 @@
       <if test="collectnum != null">
         collectNum,
       </if>
+      <if test="checkindate != null">
+        checkinDate,
+      </if>
+      <if test="checkoutdate != null">
+        checkoutDate,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="roomid != null">
@@ -171,6 +180,12 @@
       </if>
       <if test="collectnum != null">
         #{collectnum,jdbcType=INTEGER},
+      </if>
+      <if test="checkindate != null">
+        #{checkindate,jdbcType=DATE},
+      </if>
+      <if test="checkoutdate != null">
+        #{checkoutdate,jdbcType=DATE},
       </if>
     </trim>
   </insert>
@@ -210,6 +225,12 @@
       <if test="record.collectnum != null">
         collectNum = #{record.collectnum,jdbcType=INTEGER},
       </if>
+      <if test="record.checkindate != null">
+        checkinDate = #{record.checkindate,jdbcType=DATE},
+      </if>
+      <if test="record.checkoutdate != null">
+        checkoutDate = #{record.checkoutdate,jdbcType=DATE},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -225,7 +246,9 @@
       hasbreakfast = #{record.hasbreakfast,jdbcType=BIT},
       price = #{record.price,jdbcType=INTEGER},
       commentNum = #{record.commentnum,jdbcType=INTEGER},
-      collectNum = #{record.collectnum,jdbcType=INTEGER}
+      collectNum = #{record.collectnum,jdbcType=INTEGER},
+      checkinDate = #{record.checkindate,jdbcType=DATE},
+      checkoutDate = #{record.checkoutdate,jdbcType=DATE}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -257,6 +280,12 @@
       <if test="collectnum != null">
         collectNum = #{collectnum,jdbcType=INTEGER},
       </if>
+      <if test="checkindate != null">
+        checkinDate = #{checkindate,jdbcType=DATE},
+      </if>
+      <if test="checkoutdate != null">
+        checkoutDate = #{checkoutdate,jdbcType=DATE},
+      </if>
     </set>
     where roomId = #{roomid,jdbcType=INTEGER}
   </update>
@@ -269,7 +298,9 @@
       hasbreakfast = #{hasbreakfast,jdbcType=BIT},
       price = #{price,jdbcType=INTEGER},
       commentNum = #{commentnum,jdbcType=INTEGER},
-      collectNum = #{collectnum,jdbcType=INTEGER}
+      collectNum = #{collectnum,jdbcType=INTEGER},
+      checkinDate = #{checkindate,jdbcType=DATE},
+      checkoutDate = #{checkoutdate,jdbcType=DATE}
     where roomId = #{roomid,jdbcType=INTEGER}
   </update>
 </mapper>

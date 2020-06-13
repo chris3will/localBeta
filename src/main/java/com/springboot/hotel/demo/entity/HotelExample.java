@@ -783,6 +783,356 @@ public class HotelExample {
             addCriterion("score not between", value1, value2, "score");
             return (Criteria) this;
         }
+
+        public Criteria andImgurl1IsNull() {
+            addCriterion("imgurl1 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl1IsNotNull() {
+            addCriterion("imgurl1 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl1EqualTo(String value) {
+            addCriterion("imgurl1 =", value, "imgurl1");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl1NotEqualTo(String value) {
+            addCriterion("imgurl1 <>", value, "imgurl1");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl1GreaterThan(String value) {
+            addCriterion("imgurl1 >", value, "imgurl1");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl1GreaterThanOrEqualTo(String value) {
+            addCriterion("imgurl1 >=", value, "imgurl1");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl1LessThan(String value) {
+            addCriterion("imgurl1 <", value, "imgurl1");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl1LessThanOrEqualTo(String value) {
+            addCriterion("imgurl1 <=", value, "imgurl1");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl1Like(String value) {
+            addCriterion("imgurl1 like", value, "imgurl1");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl1NotLike(String value) {
+            addCriterion("imgurl1 not like", value, "imgurl1");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl1In(List<String> values) {
+            addCriterion("imgurl1 in", values, "imgurl1");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl1NotIn(List<String> values) {
+            addCriterion("imgurl1 not in", values, "imgurl1");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl1Between(String value1, String value2) {
+            addCriterion("imgurl1 between", value1, value2, "imgurl1");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl1NotBetween(String value1, String value2) {
+            addCriterion("imgurl1 not between", value1, value2, "imgurl1");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl2IsNull() {
+            addCriterion("imgurl2 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl2IsNotNull() {
+            addCriterion("imgurl2 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl2EqualTo(String value) {
+            addCriterion("imgurl2 =", value, "imgurl2");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl2NotEqualTo(String value) {
+            addCriterion("imgurl2 <>", value, "imgurl2");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl2GreaterThan(String value) {
+            addCriterion("imgurl2 >", value, "imgurl2");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl2GreaterThanOrEqualTo(String value) {
+            addCriterion("imgurl2 >=", value, "imgurl2");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl2LessThan(String value) {
+            addCriterion("imgurl2 <", value, "imgurl2");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl2LessThanOrEqualTo(String value) {
+            addCriterion("imgurl2 <=", value, "imgurl2");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl2Like(String value) {
+            addCriterion("imgurl2 like", value, "imgurl2");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl2NotLike(String value) {
+            addCriterion("imgurl2 not like", value, "imgurl2");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl2In(List<String> values) {
+            addCriterion("imgurl2 in", values, "imgurl2");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl2NotIn(List<String> values) {
+            addCriterion("imgurl2 not in", values, "imgurl2");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl2Between(String value1, String value2) {
+            addCriterion("imgurl2 between", value1, value2, "imgurl2");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl2NotBetween(String value1, String value2) {
+            addCriterion("imgurl2 not between", value1, value2, "imgurl2");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl3IsNull() {
+            addCriterion("imgurl3 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl3IsNotNull() {
+            addCriterion("imgurl3 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl3EqualTo(String value) {
+            addCriterion("imgurl3 =", value, "imgurl3");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl3NotEqualTo(String value) {
+            addCriterion("imgurl3 <>", value, "imgurl3");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl3GreaterThan(String value) {
+            addCriterion("imgurl3 >", value, "imgurl3");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl3GreaterThanOrEqualTo(String value) {
+            addCriterion("imgurl3 >=", value, "imgurl3");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl3LessThan(String value) {
+            addCriterion("imgurl3 <", value, "imgurl3");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl3LessThanOrEqualTo(String value) {
+            addCriterion("imgurl3 <=", value, "imgurl3");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl3Like(String value) {
+            addCriterion("imgurl3 like", value, "imgurl3");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl3NotLike(String value) {
+            addCriterion("imgurl3 not like", value, "imgurl3");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl3In(List<String> values) {
+            addCriterion("imgurl3 in", values, "imgurl3");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl3NotIn(List<String> values) {
+            addCriterion("imgurl3 not in", values, "imgurl3");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl3Between(String value1, String value2) {
+            addCriterion("imgurl3 between", value1, value2, "imgurl3");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl3NotBetween(String value1, String value2) {
+            addCriterion("imgurl3 not between", value1, value2, "imgurl3");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl4IsNull() {
+            addCriterion("imgurl4 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl4IsNotNull() {
+            addCriterion("imgurl4 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl4EqualTo(String value) {
+            addCriterion("imgurl4 =", value, "imgurl4");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl4NotEqualTo(String value) {
+            addCriterion("imgurl4 <>", value, "imgurl4");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl4GreaterThan(String value) {
+            addCriterion("imgurl4 >", value, "imgurl4");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl4GreaterThanOrEqualTo(String value) {
+            addCriterion("imgurl4 >=", value, "imgurl4");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl4LessThan(String value) {
+            addCriterion("imgurl4 <", value, "imgurl4");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl4LessThanOrEqualTo(String value) {
+            addCriterion("imgurl4 <=", value, "imgurl4");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl4Like(String value) {
+            addCriterion("imgurl4 like", value, "imgurl4");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl4NotLike(String value) {
+            addCriterion("imgurl4 not like", value, "imgurl4");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl4In(List<String> values) {
+            addCriterion("imgurl4 in", values, "imgurl4");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl4NotIn(List<String> values) {
+            addCriterion("imgurl4 not in", values, "imgurl4");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl4Between(String value1, String value2) {
+            addCriterion("imgurl4 between", value1, value2, "imgurl4");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl4NotBetween(String value1, String value2) {
+            addCriterion("imgurl4 not between", value1, value2, "imgurl4");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl5IsNull() {
+            addCriterion("imgurl5 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl5IsNotNull() {
+            addCriterion("imgurl5 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl5EqualTo(String value) {
+            addCriterion("imgurl5 =", value, "imgurl5");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl5NotEqualTo(String value) {
+            addCriterion("imgurl5 <>", value, "imgurl5");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl5GreaterThan(String value) {
+            addCriterion("imgurl5 >", value, "imgurl5");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl5GreaterThanOrEqualTo(String value) {
+            addCriterion("imgurl5 >=", value, "imgurl5");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl5LessThan(String value) {
+            addCriterion("imgurl5 <", value, "imgurl5");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl5LessThanOrEqualTo(String value) {
+            addCriterion("imgurl5 <=", value, "imgurl5");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl5Like(String value) {
+            addCriterion("imgurl5 like", value, "imgurl5");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl5NotLike(String value) {
+            addCriterion("imgurl5 not like", value, "imgurl5");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl5In(List<String> values) {
+            addCriterion("imgurl5 in", values, "imgurl5");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl5NotIn(List<String> values) {
+            addCriterion("imgurl5 not in", values, "imgurl5");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl5Between(String value1, String value2) {
+            addCriterion("imgurl5 between", value1, value2, "imgurl5");
+            return (Criteria) this;
+        }
+
+        public Criteria andImgurl5NotBetween(String value1, String value2) {
+            addCriterion("imgurl5 not between", value1, value2, "imgurl5");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -1,23 +1,11 @@
 package com.springboot.hotel.demo.entity;
 
+import com.springboot.hotel.demo.entity.extend.UserBeExtended;
+
 import java.util.Date;
 
-public class User {
+public class User extends UserBeExtended {
     private Integer id;
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", salt='" + salt + '\'' +
-                ", identity='" + identity + '\'' +
-                ", registerdate=" + registerdate +
-                ", lastlogintime=" + lastlogintime +
-                '}';
-    }
 
     private String username;
 

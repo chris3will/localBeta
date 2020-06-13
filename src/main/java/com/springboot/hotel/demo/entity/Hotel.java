@@ -21,6 +21,16 @@ public class Hotel {
 
     private Integer score;
 
+    private String imgurl1;
+
+    private String imgurl2;
+
+    private String imgurl3;
+
+    private String imgurl4;
+
+    private String imgurl5;
+
     public Integer getHotelid() {
         return hotelid;
     }
@@ -99,5 +109,45 @@ public class Hotel {
 
     public void setScore(Integer score) {
         this.score = score;
+    }
+
+    public String getImgurl1() {
+        return imgurl1;
+    }
+
+    public void setImgurl1(String imgurl1) {
+        this.imgurl1 = imgurl1 == null ? null : imgurl1.trim();
+    }
+
+    public String getImgurl2() {
+        return imgurl2;
+    }
+
+    public void setImgurl2(String imgurl2) {
+        this.imgurl2 = imgurl2 == null ? null : imgurl2.trim();
+    }
+
+    public String getImgurl3() {
+        return imgurl3;
+    }
+
+    public void setImgurl3(String imgurl3) {
+        this.imgurl3 = imgurl3 == null ? null : imgurl3.trim();
+    }
+
+    public String getImgurl4() {
+        return imgurl4;
+    }
+
+    public void setImgurl4(String imgurl4) {
+        this.imgurl4 = imgurl4 == null ? null : imgurl4.trim();
+    }
+
+    public String getImgurl5() {
+        return imgurl5;
+    }
+
+    public void setImgurl5(String imgurl5) {
+        this.imgurl5 = imgurl5 == null ? null : imgurl5.trim();
     }
 }

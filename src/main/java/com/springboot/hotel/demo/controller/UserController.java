@@ -86,7 +86,7 @@ public class UserController {
                             return Result.fail("用户登录时间更新失败");
                         }
                     }else{
-                        return Result.success(user,"用户名密码不对，请重新登录");
+                        return Result.fail(user,"用户名密码不对，请重新登录");
                     }
                 }
             }else{

@@ -12,6 +12,11 @@
     <result column="region" jdbcType="VARCHAR" property="region" />
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="imgurl1" jdbcType="VARCHAR" property="imgurl1" />
+    <result column="imgurl2" jdbcType="VARCHAR" property="imgurl2" />
+    <result column="imgurl3" jdbcType="VARCHAR" property="imgurl3" />
+    <result column="imgurl4" jdbcType="VARCHAR" property="imgurl4" />
+    <result column="imgurl5" jdbcType="VARCHAR" property="imgurl5" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,7 +78,7 @@
   </sql>
   <sql id="Base_Column_List">
     hotelId, hotelChinesename, hotelEnglishname, location, nation, province, city, region, 
-    address, score
+    address, score, imgurl1, imgurl2, imgurl3, imgurl4, imgurl5
   </sql>
   <select id="selectByExample" parameterType="com.springboot.hotel.demo.entity.HotelExample" resultMap="BaseResultMap">
     select
@@ -109,11 +114,15 @@
     insert into hotel (hotelId, hotelChinesename, hotelEnglishname, 
       location, nation, province, 
       city, region, address, 
-      score)
+      score, imgurl1, imgurl2, 
+      imgurl3, imgurl4, imgurl5
+      )
     values (#{hotelid,jdbcType=INTEGER}, #{hotelchinesename,jdbcType=VARCHAR}, #{hotelenglishname,jdbcType=VARCHAR}, 
       #{location,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
       #{city,jdbcType=VARCHAR}, #{region,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{score,jdbcType=INTEGER})
+      #{score,jdbcType=INTEGER}, #{imgurl1,jdbcType=VARCHAR}, #{imgurl2,jdbcType=VARCHAR}, 
+      #{imgurl3,jdbcType=VARCHAR}, #{imgurl4,jdbcType=VARCHAR}, #{imgurl5,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.springboot.hotel.demo.entity.Hotel">
     insert into hotel
@@ -148,6 +157,21 @@
       <if test="score != null">
         score,
       </if>
+      <if test="imgurl1 != null">
+        imgurl1,
+      </if>
+      <if test="imgurl2 != null">
+        imgurl2,
+      </if>
+      <if test="imgurl3 != null">
+        imgurl3,
+      </if>
+      <if test="imgurl4 != null">
+        imgurl4,
+      </if>
+      <if test="imgurl5 != null">
+        imgurl5,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="hotelid != null">
@@ -179,6 +203,21 @@
       </if>
       <if test="score != null">
         #{score,jdbcType=INTEGER},
+      </if>
+      <if test="imgurl1 != null">
+        #{imgurl1,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl2 != null">
+        #{imgurl2,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl3 != null">
+        #{imgurl3,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl4 != null">
+        #{imgurl4,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl5 != null">
+        #{imgurl5,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -221,6 +260,21 @@
       <if test="record.score != null">
         score = #{record.score,jdbcType=INTEGER},
       </if>
+      <if test="record.imgurl1 != null">
+        imgurl1 = #{record.imgurl1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgurl2 != null">
+        imgurl2 = #{record.imgurl2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgurl3 != null">
+        imgurl3 = #{record.imgurl3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgurl4 != null">
+        imgurl4 = #{record.imgurl4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgurl5 != null">
+        imgurl5 = #{record.imgurl5,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -237,7 +291,12 @@
       city = #{record.city,jdbcType=VARCHAR},
       region = #{record.region,jdbcType=VARCHAR},
       address = #{record.address,jdbcType=VARCHAR},
-      score = #{record.score,jdbcType=INTEGER}
+      score = #{record.score,jdbcType=INTEGER},
+      imgurl1 = #{record.imgurl1,jdbcType=VARCHAR},
+      imgurl2 = #{record.imgurl2,jdbcType=VARCHAR},
+      imgurl3 = #{record.imgurl3,jdbcType=VARCHAR},
+      imgurl4 = #{record.imgurl4,jdbcType=VARCHAR},
+      imgurl5 = #{record.imgurl5,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -272,6 +331,21 @@
       <if test="score != null">
         score = #{score,jdbcType=INTEGER},
       </if>
+      <if test="imgurl1 != null">
+        imgurl1 = #{imgurl1,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl2 != null">
+        imgurl2 = #{imgurl2,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl3 != null">
+        imgurl3 = #{imgurl3,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl4 != null">
+        imgurl4 = #{imgurl4,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl5 != null">
+        imgurl5 = #{imgurl5,jdbcType=VARCHAR},
+      </if>
     </set>
     where hotelId = #{hotelid,jdbcType=INTEGER}
   </update>
@@ -285,7 +359,12 @@
       city = #{city,jdbcType=VARCHAR},
       region = #{region,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
-      score = #{score,jdbcType=INTEGER}
+      score = #{score,jdbcType=INTEGER},
+      imgurl1 = #{imgurl1,jdbcType=VARCHAR},
+      imgurl2 = #{imgurl2,jdbcType=VARCHAR},
+      imgurl3 = #{imgurl3,jdbcType=VARCHAR},
+      imgurl4 = #{imgurl4,jdbcType=VARCHAR},
+      imgurl5 = #{imgurl5,jdbcType=VARCHAR}
     where hotelId = #{hotelid,jdbcType=INTEGER}
   </update>
 </mapper>

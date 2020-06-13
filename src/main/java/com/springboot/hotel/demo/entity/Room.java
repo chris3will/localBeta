@@ -1,5 +1,7 @@
 package com.springboot.hotel.demo.entity;
 
+import java.util.Date;
+
 public class Room {
     private Integer roomid;
 
@@ -18,6 +20,10 @@ public class Room {
     private Integer commentnum;
 
     private Integer collectnum;
+
+    private Date checkindate;
+
+    private Date checkoutdate;
 
     public Integer getRoomid() {
         return roomid;
@@ -89,5 +95,21 @@ public class Room {
 
     public void setCollectnum(Integer collectnum) {
         this.collectnum = collectnum;
+    }
+
+    public Date getCheckindate() {
+        return checkindate;
+    }
+
+    public void setCheckindate(Date checkindate) {
+        this.checkindate = checkindate;
+    }
+
+    public Date getCheckoutdate() {
+        return checkoutdate;
+    }
+
+    public void setCheckoutdate(Date checkoutdate) {
+        this.checkoutdate = checkoutdate;
     }
 }

@@ -1,6 +1,8 @@
 package com.springboot.hotel.demo.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 public class RoomExample {
@@ -102,6 +104,32 @@ public class RoomExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value.getTime()), property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
+            if (values == null || values.size() == 0) {
+                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
+            }
+            List<java.sql.Date> dateList = new ArrayList<>();
+            Iterator<Date> iter = values.iterator();
+            while (iter.hasNext()) {
+                dateList.add(new java.sql.Date(iter.next().getTime()));
+            }
+            addCriterion(condition, dateList, property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andRoomidIsNull() {
@@ -671,6 +699,126 @@ public class RoomExample {
 
         public Criteria andCollectnumNotBetween(Integer value1, Integer value2) {
             addCriterion("collectNum not between", value1, value2, "collectnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckindateIsNull() {
+            addCriterion("checkinDate is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckindateIsNotNull() {
+            addCriterion("checkinDate is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckindateEqualTo(Date value) {
+            addCriterionForJDBCDate("checkinDate =", value, "checkindate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckindateNotEqualTo(Date value) {
+            addCriterionForJDBCDate("checkinDate <>", value, "checkindate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckindateGreaterThan(Date value) {
+            addCriterionForJDBCDate("checkinDate >", value, "checkindate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckindateGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("checkinDate >=", value, "checkindate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckindateLessThan(Date value) {
+            addCriterionForJDBCDate("checkinDate <", value, "checkindate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckindateLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("checkinDate <=", value, "checkindate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckindateIn(List<Date> values) {
+            addCriterionForJDBCDate("checkinDate in", values, "checkindate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckindateNotIn(List<Date> values) {
+            addCriterionForJDBCDate("checkinDate not in", values, "checkindate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckindateBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("checkinDate between", value1, value2, "checkindate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckindateNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("checkinDate not between", value1, value2, "checkindate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckoutdateIsNull() {
+            addCriterion("checkoutDate is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckoutdateIsNotNull() {
+            addCriterion("checkoutDate is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckoutdateEqualTo(Date value) {
+            addCriterionForJDBCDate("checkoutDate =", value, "checkoutdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckoutdateNotEqualTo(Date value) {
+            addCriterionForJDBCDate("checkoutDate <>", value, "checkoutdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckoutdateGreaterThan(Date value) {
+            addCriterionForJDBCDate("checkoutDate >", value, "checkoutdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckoutdateGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("checkoutDate >=", value, "checkoutdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckoutdateLessThan(Date value) {
+            addCriterionForJDBCDate("checkoutDate <", value, "checkoutdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckoutdateLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("checkoutDate <=", value, "checkoutdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckoutdateIn(List<Date> values) {
+            addCriterionForJDBCDate("checkoutDate in", values, "checkoutdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckoutdateNotIn(List<Date> values) {
+            addCriterionForJDBCDate("checkoutDate not in", values, "checkoutdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckoutdateBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("checkoutDate between", value1, value2, "checkoutdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andCheckoutdateNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("checkoutDate not between", value1, value2, "checkoutdate");
             return (Criteria) this;
         }
     }
